@@ -62,55 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/18/hello-world/" class="article-date">
-  <time datetime="2019-06-18T00:47:00.000Z" itemprop="datePublished">2019-06-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/18/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/18/hello-world/" data-id="cjx5vqaon0005h5kju7zgb3vr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Nachos-安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/18/Nachos-安装/" class="article-date">
@@ -146,6 +97,8 @@
 <h2 id="Nachos-修改和编译"><a href="#Nachos-修改和编译" class="headerlink" title="Nachos 修改和编译"></a>Nachos 修改和编译</h2><p>（1）解压Nachos后，修改 code/lib/sysdep.h，在头文件后追加：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
 
+<p>如图所示</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/add-namespace_lepi0o.png" alt></p>
 <p>(2)建立依赖关系</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ./code/build.linux</span><br><span class="line">make depend</span><br></pre></td></tr></table></figure>
 
@@ -153,23 +106,29 @@
 <p>删除 203 行的 -fwritable-strings 选项</p>
 <p>改变后变为：</p>
 <p><code>CFLAGS = -ftemplate-depth-100 -Wno-deprecated -g -Wall $(INCPATH) $(DEFINES) $(HOSTCFLAGS) -DCHANGED</code></p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038991/Blog/Nachos/Install%20and%20complie/delet_fwritable-strings_fwtpxa.png" alt></p>
 <p>此时执行make 会报错，出现 error ‘IsInList’</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error1_eeyg7x.png" alt></p>
 <p>（4）修改 code/lib/list.cc，将编译中包含 numInList, first, last, IsEmpty(), IsInList 的地方或属性修改为 this-&gt;numInList, this-&gt;first, this-&gt;last, this-&gt;IsEmpty(), this-&gt;IsInList （哪里报错改哪里）</p>
 <p>再次编译，仍然会出现错误，出现 error cast from ‘VoidFunctionPtr’ 。</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error2_ensswk.png" alt></p>
 <p>（5）在Makefile 203 行添加选项 -fpermissive 再次执行make，会出现一些汇编的报错。</p>
 <pre><code>switch.s 7:Error invalid instruction suffix for &apos;push&apos;
 switch.s 9:Error invalid instruction suffix for &apos;push&apos;
 .........
-make: *** [switch.o] Error 1</code></pre><p>给 g++ 增加编译选项 -m32</p>
+make: *** [switch.o] Error 1</code></pre><p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error3_ljoerj.png" alt></p>
+<p>给 g++ 增加编译选项 -m32</p>
 <pre><code>echo ‘/usr/bin/g++ -m32 “$@”’ &gt; /̃g++
 chmod +x /̃g++
 export PATH=$HOME:$PATH</code></pre><p>修改 Makefile 203行与210行分别加入选项 -m32 和 –32， 让编译器能够编译汇编32位的代码。</p>
-<p>此时执行 make ， 便可成功编译出 nachos 二进制文件了。</p>
+<p>此时执行 make ， 便可成功编译出 nachos 二进制文件了。成功执行后，命令行代码如下图所示：</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/done_vuda2a.png" alt></p>
+<p>Nachos的安装算是完成了，但是为了后续实验能正常操作，还需要安装交叉编译环境。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/18/Nachos-安装/" data-id="cjx5vqaol0004h5kjeabnozlt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/18/Nachos-安装/" data-id="cjxl9vp7l0004kjkjbhon3afs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +170,7 @@ export PATH=$HOME:$PATH</code></pre><p>修改 Makefile 203行与210行分别加�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/18/My-New-Post/" data-id="cjx5vqaoi0003h5kjb8wvag2n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/18/My-New-Post/" data-id="cjxl9vp7i0003kjkj3sl47jm8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,10 +209,6 @@ export PATH=$HOME:$PATH</code></pre><p>修改 Makefile 203行与210行分别加�
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2019/06/18/hello-world/">Hello World</a>
-          </li>
         
           <li>
             <a href="/2019/06/18/Nachos-安装/">Nachos 安装</a>
