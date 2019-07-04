@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Starrk的小屋</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.starrk.me/"/>
+  <updated>2019-07-02T03:48:22.026Z</updated>
+  <id>https://www.starrk.me/</id>
+  
+  <author>
+    <name>Starrk</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nachos 安装</title>
+    <link href="https://www.starrk.me/2019/06/18/nachos-an-zhuang/"/>
+    <id>https://www.starrk.me/2019/06/18/nachos-an-zhuang/</id>
+    <published>2019-06-18T00:40:18.000Z</published>
+    <updated>2019-07-02T03:48:22.026Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;何为Nachos&quot;&gt;&lt;a href=&quot;#何为Nachos&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
