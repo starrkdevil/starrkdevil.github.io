@@ -1,453 +1,623 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-    <!--
-        © SukkaW
-        GitHub: https://github.com/SukkaW/hexo-theme-suka
-        Version: 1.3.3
-    -->
-    <script>
-window.lsVersion = "1.3.3",
-window.oldVersion = [
-    
-        
-            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
-        
-    
-]
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
 </script>
 
-    <!-- ### DNS Prefetch ### -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-<!-- busuanzi -->
 
-    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+  
 
 
-<!-- comment -->
 
 
-
-
-
-
-
-<!-- analytics -->
-
-
-
-
-
-
-
-
-    <!-- ### Preload ### -->
-    
-    <!-- Busuanzi -->
-    
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
-
-
-
-
-
-
-
-    <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-
-<!-- Title -->
-<title>Starrk的小屋</title>
-
-<!-- favicon -->
-<!-- Favicons -->
-
-    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
-
-
-
-
-
-
-<!-- Android Chrome Color -->
-
-
-
-<meta name="format-detection" content="telephone=no">
-
-<!-- Description -->
-<meta name="description" content>
-
-<!-- Keywords -->
-<meta name="keywords" content>
-
-<!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-    <!-- ### Import File ### -->
-    
-        <!-- spectre.css -->
-
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
-
-
-<style>
-    body {
-        background-color: #f8f9fa;
-    }
-
-    a, a:visited {
-        color: #0070ff;
-    }
-
-    a:active, a:focus, a:hover {
-        color: #0070ff;
-        opacity: .75;
-    }
-
-    #post-content a,
-    #post-content a:hover,
-    #post-content a:focus,
-    #post-content a:visited {
-        color: #005eb9;
-        opacity: 1;
-    }
-
-    .post-entry .card-body a {
-        color: #0070ff;
-    }
-
-    .avatar {
-        background: #444;
-    }
-
-    .navbar-link,
-    .navbar-link:visited,
-    .timeline .timeline-item .timeline-icon.icon-lg {
-        color: #0070ff;
-    }
-
-    .navbar-link:hover {
-        color: #0070ff;
-        opacity: .8;
-    }
-
-    #search-input .btn,
-    #disqus_click_btn,
-    #disqus-switch-to-direct,
-    #disqus-loadmore-button {
-        background: #727e96;
-        border-color: #727e96;
-        color: #fff;
-    }
-
-    #post-toc a.post-toc-link,
-    #post-toc a.post-toc-link:visited,
-    .share-menu.menu .menu-item>a {
-        color: #727e96;
-    }
-
-    .share-menu.menu .menu-item>a:hover,
-    .share-menu.menu .menu-item>a:focus,
-    .share-menu.menu .menu-item>a:visited {
-        color: #50596c;
-        background: #f8f9fa;
-        opacity: .85;
-    }
-</style>
-
-<!-- style.css -->
-
-    <link rel="stylesheet" href="/css/style.min.css">
-
-
-
-
-
-
-
-
-
-
-    
-
-    <!-- ### Site Verification ### -->
-    
-
-
-    <!-- ### RSS ### -->
-    
-    
-        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
-    
-
-
-    <!-- ### WebApp ### -->
-    <meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="Starrk的小屋">
-<meta name="msapplication-starturl" content="https://www.starrk.me">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Starrk的小屋">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- Manifest Import -->
-
-<!-- Open Search -->
-
-    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Starrk的小屋">
-
-
-    <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="Starrk的小屋">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Starrk的小屋">
+<meta property="og:url" content="https://www.starrk.me/index.html">
 <meta property="og:site_name" content="Starrk的小屋">
-
 <meta property="og:locale" content="zh-CN">
-
-<meta property="og:url" content="https://www.starrk.me/">
-<meta property="og:image" content="https://www.starrk.me/img/suka-favicon.ico">
-
-<meta property="og:description" content>
-
 <meta name="twitter:card" content="summary">
-
-
-    <meta property="og:type" content="blog">
-
+<meta name="twitter:title" content="Starrk的小屋">
 
 
 
-
-    <!-- ### Analytics ### -->
-    
+  <link rel="alternate" href="/atom.xml" title="Starrk的小屋" type="application/atom+xml">
 
 
 
+  
+  
+  <link rel="canonical" href="https://www.starrk.me/">
 
 
 
-
-
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://www.starrk.me/">
-
-    <!-- ### Structured Data ### -->
-    
-<script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "Blog",
-    "author": {
-        "@type": "Person",
-        "name": "Starrk",
-        "image": {
-            "@type": "ImageObject",
-            "url": "https://www.starrk.me/img/default_avatar.png"
-        },
-        "description": "ÈËÊÇһ¸ù˼¿¼µÄ«έ"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "Starrk的小屋",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "https://www.starrk.me/img/suka-favicon.ico"
-        }
-    },
-    "url": "https://www.starrk.me",
-    "logo": "https://www.starrk.me/img/suka-favicon.ico",
-    "image": {
-        "@type": "ImageObject",
-        "url": "https://www.starrk.me/img/suka-favicon.ico"
-    },
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.starrk.me"
-    },
-    
-    "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.starrk.me/search?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-    },
-    
-    "keywords": "",
-    "description": ""
-}
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
 </script>
 
+  <title>Starrk的小屋</title>
+  
 
 
 
 
-    <!-- ### Custom Head ### -->
-    
 
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-    <body>
-        
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-            
-
-            <!-- ### Main content ### -->
-            <!-- ## Header ##-->
-<header>
-    <h1 class="header-title text-center"><a href="/">Starrk的小屋</a></h1>
-
-    <p class="text-center header-slogan">
-        
-            
-                ÈËÊÇһ¸ù˼¿¼µÄ«έ
-            
-        
-    </p>
-
-    <nav class="navbar-section text-center">
+  
+  
     
-        <a href="/" class="navbar-link">首页</a>
-    
-    
-        <a href="/archives/" class="navbar-link">归档</a>
-    
-    
-        <a href="/search" class="navbar-link">搜索</a>
-    
-    
-        <a href="/friends/index.me" class="navbar-link">Friends</a>
-    
-    
-    
-</nav>
-</header>
+  
 
-            <div class="container">
-    <div class="main-container">
-        <main>
-            <div class="post-stream-container">
-                <!-- # Post List # -->
-                
-                    
-                        
-    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
 
-<article class="post-entry container px-0 card">
-        <div class="columns col-gapless">
-            
-                <div class="column col-12">
-                    
-    <h2 class="h5 mb-0 card-header"><a class="card-title" href="/2019/06/18/nachos-an-zhuang/" rel="bookmark">Nachos 安装</a></h2>
-
-
-<p class="mb-0 card-body">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
     
-        何为Nachos它是一个教学用的操作系统平台，运行在宿主机上，...
-    <a href="/2019/06/18/nachos-an-zhuang/">阅读全文</a>
-</p>
 
-
-
-
-    <!-- Date & Category -->
-    <div class="card-footer post-entry-info text-gray">
-        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Starrk's Avatar">
-        <time>2019-06-18</time>
-        
-        
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Starrk的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+    
+    
+  </div>
 
-                </div>
-            
-        </div>
-</article>
-
-                    
-                
-            </div>
-        </main>
-        
-
-    </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-            <!-- ### Footer ### -->
-            <footer class="text-center">
-    <!-- footer copyright -->
-    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
-        <a class="footer-copyright-a" href="https://www.starrk.me">Starrk的小屋</a>
-    </p>
-    <!-- footer custom text -->
-    <p class="footer-text mb-0">
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
     
-    </p>
-    <!-- footer develop info -->
-    <p class="footer-develop mb-0">
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
         
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
             
-    <!-- Busuanzi User Views -->
-    <span id="busuanzi_container_site_uv" hidden>
-        <span></span>
-        <span id="busuanzi_value_site_uv"></span>
-        <span>Viewers</span>
-        
-            <span>|</span>
-        
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.starrk.me/2019/06/18/nachos-an-zhuang/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Starrk">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Starrk的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/18/nachos-an-zhuang/" class="post-title-link" itemprop="url">Nachos 安装</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-18 08:40:18" itemprop="dateCreated datePublished" datetime="2019-06-18T08:40:18+08:00">2019-06-18</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-02 11:48:22" itemprop="dateModified" datetime="2019-07-02T11:48:22+08:00">2019-07-02</time>
+              </span>
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="何为Nachos"><a href="#何为Nachos" class="headerlink" title="何为Nachos"></a>何为Nachos</h1><p>它是一个教学用的操作系统平台，运行在宿主机上，通过编译即可运行。它的源码大部分由C和C++组成，涉及少量的汇编。因为是教学使用，源码中有大量注释，方面理解，同时源码也并不复杂。<br>Nachos已经搭建好了操作系统框架，包括：线程、系统调用、内存管理等等。但是并不完善，诸如线程只能使用4个，内存默认是没有启用TLB快表。这些不完善的地方便是需要自己去学习，扩展，提升的地方。</p>
+<h1 id="Nachos安装"><a href="#Nachos安装" class="headerlink" title="Nachos安装"></a>Nachos安装</h1><p>操作系统环境：Ubuntu 16.04<br>Nachos包：4.1版本</p>
+<h2 id="C语言编译环境搭建"><a href="#C语言编译环境搭建" class="headerlink" title="C语言编译环境搭建"></a>C语言编译环境搭建</h2><p>（1）安装 C与C++编译器</p>
+<p><code>sudo apt-get install build-essential</code></p>
+<p>（2）安装 g++ 和 gcc 多平台库</p>
+<p><code>sudo apt install g++-multilib gcc-multilib</code></p>
+<p>（3）安装 gcc和 g++ 5的版本，并将其切换。</p>
+<p>注：因Ubuntu 16.04自带的7版本环境在编译Nachos时会出现bug，需要将其版本号降下来。</p>
+<pre><code>sudo apt-get install gcc-5 g++-5
+sudo update-alternative --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
+sudo update-alternative --install /usr/bin/g++ g++ /usr/bin/g++ -5 100</code></pre><h2 id="Nachos-修改和编译"><a href="#Nachos-修改和编译" class="headerlink" title="Nachos 修改和编译"></a>Nachos 修改和编译</h2><p>（1）解压Nachos后，修改 code/lib/sysdep.h，在头文件后追加：</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></code></pre>
+<p>如图所示</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/add-namespace_lepi0o.png" alt></p>
+<p>(2)建立依赖关系</p>
+<pre class=" language-shell"><code class="language-shell">cd ./code/build.linux
+make depend</code></pre>
+<p>（3）修改Makefile</p>
+<p>删除 203 行的 -fwritable-strings 选项</p>
+<p>改变后变为：</p>
+<p><code>CFLAGS = -ftemplate-depth-100 -Wno-deprecated -g -Wall $(INCPATH) $(DEFINES) $(HOSTCFLAGS) -DCHANGED</code></p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038991/Blog/Nachos/Install%20and%20complie/delet_fwritable-strings_fwtpxa.png" alt></p>
+<p>此时执行make 会报错，出现 error ‘IsInList’</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error1_eeyg7x.png" alt></p>
+<p>（4）修改 code/lib/list.cc，将编译中包含 numInList, first, last, IsEmpty(), IsInList 的地方或属性修改为 this-&gt;numInList, this-&gt;first, this-&gt;last, this-&gt;IsEmpty(), this-&gt;IsInList （哪里报错改哪里）</p>
+<p>再次编译，仍然会出现错误，出现 error cast from ‘VoidFunctionPtr’ 。</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error2_ensswk.png" alt></p>
+<p>（5）在Makefile 203 行添加选项 -fpermissive 再次执行make，会出现一些汇编的报错。</p>
+<pre><code>switch.s 7:Error invalid instruction suffix for &#39;push&#39;
+switch.s 9:Error invalid instruction suffix for &#39;push&#39;
+.........
+make: *** [switch.o] Error 1</code></pre><p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error3_ljoerj.png" alt></p>
+<p>给 g++ 增加编译选项 -m32</p>
+<pre><code>echo ‘/usr/bin/g++ -m32 “$@”’ &gt; /̃g++
+chmod +x /̃g++
+export PATH=$HOME:$PATH</code></pre><p>修改 Makefile 203行与210行分别加入选项 -m32 和 –32， 让编译器能够编译汇编32位的代码。</p>
+<p>此时执行 make ， 便可成功编译出 nachos 二进制文件了。成功执行后，命令行代码如下图所示：</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/done_vuda2a.png" alt></p>
+<p>Nachos的安装算是完成了，但是为了后续实验能正常操作，还需要安装交叉编译环境。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Starrk</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
 
 
         
-        
-        Powered by&nbsp;<!--
-         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
-         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
-    </p>
-</footer>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Starrk</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
 
         
 
-        <!-- ### Import File ### -->
-        <!-- ### Footer JS Import ### -->
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
 
 <script>
-window.lazyLoadOptions = {
-    elements_selector: ".lazyload",
-    threshold: 50
-};
-
-
-
-    /* Copyright */
-    var copyrightNow = new Date().getFullYear();
-    var copyrightContent = document.querySelector('span[data-year]')
-    
-        copyrightContent.textContent = copyrightNow
-    
-
-
-
-/* Cnosole Log */
-console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
-<!-- vanilla-lazyload -->
-
-    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-
-
-
-    <!-- Busuanzi -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
-
-
-<!-- Offset -->
 
 
 
@@ -455,15 +625,101 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 
-<!-- gallery.js -->
 
 
-<!-- Comment -->
 
 
-<!-- ### Custom Footer ### -->
 
 
-    </body>
 
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
