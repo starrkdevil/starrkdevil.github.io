@@ -1,0 +1,6 @@
+
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>[[Your Site Name]</ShortName>
+    <Description>[[Your Site Description]]</Description>
+    <Url type="text/html" template="[https://starrk.me]?s={searchTerms}" />
+</OpenSearchDescription>
