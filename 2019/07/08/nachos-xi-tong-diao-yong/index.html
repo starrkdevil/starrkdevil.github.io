@@ -94,24 +94,26 @@
 
 
 
-  <meta name="description" content="何为Nachos它是一个教学用的操作系统平台，运行在宿主机上，通过编译即可运行。它的源码大部分由C和C++组成，涉及少量的汇编。因为是教学使用，源码中有大量注释，方面理解，同时源码也并不复杂。Nachos已经搭建好了操作系统框架，包括：线程、系统调用、内存管理等等。但是并不完善，诸如线程只能使用4个，内存默认是没有启用TLB快表。这些不完善的地方便是需要自己去学习，扩展，提升的地方。 Nachos">
+  <meta name="description" content="目标Nachos 只有一些系统调用，同时诸如 exec 、join等系统调用还不完全，需要用户自己去编写。本文目标是编写一个新的系统调用，参照加法的系统调用编写出乘法和除法的系统调用。 新的系统调用的实现test目录下的修改进入 code/test目录，编写一个C程序，模仿add.c，命名为test.c 样例如下：  这是一会需要编译测试的程序，Mul和Div是我们将要追加的系统调用。此外还需要在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nachos 安装">
-<meta property="og:url" content="https://www.starrk.me/2019/06/18/nachos-an-zhuang/index.html">
+<meta property="og:title" content="Nachos 系统调用">
+<meta property="og:url" content="https://www.starrk.me/2019/07/08/nachos-xi-tong-diao-yong/index.html">
 <meta property="og:site_name" content="Starrk的小屋">
-<meta property="og:description" content="何为Nachos它是一个教学用的操作系统平台，运行在宿主机上，通过编译即可运行。它的源码大部分由C和C++组成，涉及少量的汇编。因为是教学使用，源码中有大量注释，方面理解，同时源码也并不复杂。Nachos已经搭建好了操作系统框架，包括：线程、系统调用、内存管理等等。但是并不完善，诸如线程只能使用4个，内存默认是没有启用TLB快表。这些不完善的地方便是需要自己去学习，扩展，提升的地方。 Nachos">
+<meta property="og:description" content="目标Nachos 只有一些系统调用，同时诸如 exec 、join等系统调用还不完全，需要用户自己去编写。本文目标是编写一个新的系统调用，参照加法的系统调用编写出乘法和除法的系统调用。 新的系统调用的实现test目录下的修改进入 code/test目录，编写一个C程序，模仿add.c，命名为test.c 样例如下：  这是一会需要编译测试的程序，Mul和Div是我们将要追加的系统调用。此外还需要在">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/add-namespace_lepi0o.png">
-<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562038991/Blog/Nachos/Install%20and%20complie/delet_fwritable-strings_fwtpxa.png">
-<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error1_eeyg7x.png">
-<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error2_ensswk.png">
-<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error3_ljoerj.png">
-<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/done_vuda2a.png">
-<meta property="og:updated_time" content="2019-07-02T03:48:22.026Z">
+<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E6%9B%B4%E6%94%B9syscall_gquxd0.png">
+<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E6%9B%B4%E6%94%B9start_ni7amj.png">
+<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571898/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%8F%B7_oei9le.png">
+<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E7%B3%BB%E7%BB%9F%E5%A3%B0%E6%98%8E_wjuhpo.png">
+<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571898/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E4%BB%BF%E5%86%99SC_MUL_p03bas.png">
+<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571898/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E4%BB%BF%E5%86%99SC_DIV_zahzob.png">
+<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571898/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E4%BF%AE%E6%94%B9ksyscall_rhgu7d.png">
+<meta property="og:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E5%AE%8C%E6%88%90%E5%9B%BE_jjckov.png">
+<meta property="og:updated_time" content="2019-07-08T07:50:52.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nachos 安装">
-<meta name="twitter:description" content="何为Nachos它是一个教学用的操作系统平台，运行在宿主机上，通过编译即可运行。它的源码大部分由C和C++组成，涉及少量的汇编。因为是教学使用，源码中有大量注释，方面理解，同时源码也并不复杂。Nachos已经搭建好了操作系统框架，包括：线程、系统调用、内存管理等等。但是并不完善，诸如线程只能使用4个，内存默认是没有启用TLB快表。这些不完善的地方便是需要自己去学习，扩展，提升的地方。 Nachos">
-<meta name="twitter:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/add-namespace_lepi0o.png">
+<meta name="twitter:title" content="Nachos 系统调用">
+<meta name="twitter:description" content="目标Nachos 只有一些系统调用，同时诸如 exec 、join等系统调用还不完全，需要用户自己去编写。本文目标是编写一个新的系统调用，参照加法的系统调用编写出乘法和除法的系统调用。 新的系统调用的实现test目录下的修改进入 code/test目录，编写一个C程序，模仿add.c，命名为test.c 样例如下：  这是一会需要编译测试的程序，Mul和Div是我们将要追加的系统调用。此外还需要在">
+<meta name="twitter:image" content="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E6%9B%B4%E6%94%B9syscall_gquxd0.png">
 
 
 
@@ -121,7 +123,7 @@
 
   
   
-  <link rel="canonical" href="https://www.starrk.me/2019/06/18/nachos-an-zhuang/">
+  <link rel="canonical" href="https://www.starrk.me/2019/07/08/nachos-xi-tong-diao-yong/">
 
 
 
@@ -131,7 +133,7 @@
   };
 </script>
 
-  <title>Nachos 安装 | Starrk的小屋</title>
+  <title>Nachos 系统调用 | Starrk的小屋</title>
   
 
 
@@ -323,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.starrk.me/2019/06/18/nachos-an-zhuang/">
+    <link itemprop="mainEntityOfPage" href="https://www.starrk.me/2019/07/08/nachos-xi-tong-diao-yong/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Starrk">
@@ -340,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Nachos 安装
+          <h1 class="post-title" itemprop="name headline">Nachos 系统调用
 
               
             
@@ -366,23 +368,13 @@
                 
               
 
-              <time title="创建时间：2019-06-18 08:40:18" itemprop="dateCreated datePublished" datetime="2019-06-18T08:40:18+08:00">2019-06-18</time>
+              <time title="创建时间：2019-07-08 15:11:19 / 修改时间：15:50:52" itemprop="dateCreated datePublished" datetime="2019-07-08T15:11:19+08:00">2019-07-08</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-02 11:48:22" itemprop="dateModified" datetime="2019-07-02T11:48:22+08:00">2019-07-02</time>
-              </span>
             
           
 
@@ -418,45 +410,25 @@
       
 
       
-        <h1 id="何为Nachos"><a href="#何为Nachos" class="headerlink" title="何为Nachos"></a>何为Nachos</h1><p>它是一个教学用的操作系统平台，运行在宿主机上，通过编译即可运行。它的源码大部分由C和C++组成，涉及少量的汇编。因为是教学使用，源码中有大量注释，方面理解，同时源码也并不复杂。<br>Nachos已经搭建好了操作系统框架，包括：线程、系统调用、内存管理等等。但是并不完善，诸如线程只能使用4个，内存默认是没有启用TLB快表。这些不完善的地方便是需要自己去学习，扩展，提升的地方。</p>
-<h1 id="Nachos安装"><a href="#Nachos安装" class="headerlink" title="Nachos安装"></a>Nachos安装</h1><p>操作系统环境：Ubuntu 16.04<br>Nachos包：4.1版本</p>
-<h2 id="C语言编译环境搭建"><a href="#C语言编译环境搭建" class="headerlink" title="C语言编译环境搭建"></a>C语言编译环境搭建</h2><p>（1）安装 C与C++编译器</p>
-<p><code>sudo apt-get install build-essential</code></p>
-<p>（2）安装 g++ 和 gcc 多平台库</p>
-<p><code>sudo apt install g++-multilib gcc-multilib</code></p>
-<p>（3）安装 gcc和 g++ 5的版本，并将其切换。</p>
-<p>注：因Ubuntu 16.04自带的7版本环境在编译Nachos时会出现bug，需要将其版本号降下来。</p>
-<pre><code>sudo apt-get install gcc-5 g++-5
-sudo update-alternative --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
-sudo update-alternative --install /usr/bin/g++ g++ /usr/bin/g++ -5 100</code></pre><h2 id="Nachos-修改和编译"><a href="#Nachos-修改和编译" class="headerlink" title="Nachos 修改和编译"></a>Nachos 修改和编译</h2><p>（1）解压Nachos后，修改 code/lib/sysdep.h，在头文件后追加：</p>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></code></pre>
-<p>如图所示</p>
-<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/add-namespace_lepi0o.png" alt></p>
-<p>(2)建立依赖关系</p>
-<pre class=" language-shell"><code class="language-shell">cd ./code/build.linux
-make depend</code></pre>
-<p>（3）修改Makefile</p>
-<p>删除 203 行的 -fwritable-strings 选项</p>
-<p>改变后变为：</p>
-<p><code>CFLAGS = -ftemplate-depth-100 -Wno-deprecated -g -Wall $(INCPATH) $(DEFINES) $(HOSTCFLAGS) -DCHANGED</code></p>
-<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038991/Blog/Nachos/Install%20and%20complie/delet_fwritable-strings_fwtpxa.png" alt></p>
-<p>此时执行make 会报错，出现 error ‘IsInList’</p>
-<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error1_eeyg7x.png" alt></p>
-<p>（4）修改 code/lib/list.cc，将编译中包含 numInList, first, last, IsEmpty(), IsInList 的地方或属性修改为 this-&gt;numInList, this-&gt;first, this-&gt;last, this-&gt;IsEmpty(), this-&gt;IsInList （哪里报错改哪里）</p>
-<p>再次编译，仍然会出现错误，出现 error cast from ‘VoidFunctionPtr’ 。</p>
-<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error2_ensswk.png" alt></p>
-<p>（5）在Makefile 203 行添加选项 -fpermissive 再次执行make，会出现一些汇编的报错。</p>
-<pre><code>switch.s 7:Error invalid instruction suffix for &#39;push&#39;
-switch.s 9:Error invalid instruction suffix for &#39;push&#39;
-.........
-make: *** [switch.o] Error 1</code></pre><p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/error3_ljoerj.png" alt></p>
-<p>给 g++ 增加编译选项 -m32</p>
-<pre><code>echo ‘/usr/bin/g++ -m32 “$@”’ &gt; /̃g++
-chmod +x /̃g++
-export PATH=$HOME:$PATH</code></pre><p>修改 Makefile 203行与210行分别加入选项 -m32 和 –32， 让编译器能够编译汇编32位的代码。</p>
-<p>此时执行 make ， 便可成功编译出 nachos 二进制文件了。成功执行后，命令行代码如下图所示：</p>
-<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562038988/Blog/Nachos/Install%20and%20complie/done_vuda2a.png" alt></p>
-<p>Nachos的安装算是完成了，但是为了后续实验能正常操作，还需要安装交叉编译环境。</p>
+        <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>Nachos 只有一些系统调用，同时诸如 exec 、join等系统调用还不完全，需要用户自己去编写。本文目标是编写一个新的系统调用，参照加法的系统调用编写出乘法和除法的系统调用。</p>
+<h2 id="新的系统调用的实现"><a href="#新的系统调用的实现" class="headerlink" title="新的系统调用的实现"></a>新的系统调用的实现</h2><h3 id="test目录下的修改"><a href="#test目录下的修改" class="headerlink" title="test目录下的修改"></a>test目录下的修改</h3><p>进入 code/test目录，编写一个C程序，模仿add.c，命名为test.c 样例如下：</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E6%9B%B4%E6%94%B9syscall_gquxd0.png" alt></p>
+<p>这是一会需要编译测试的程序，Mul和Div是我们将要追加的系统调用。此外还需要在test目录下更改start.c，它是编译程序时的入口，再执行可执行文件时会通过start.o进行查找系统调用，所以需要在start.c 中追加新的系统调用，格式参考add</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E6%9B%B4%E6%94%B9start_ni7amj.png" alt></p>
+<p>最后还需要修改Makefile，使得能对用户程序进行编译生成可执行文件，在SOURCES后追加就完事了，偷懒可以直接在halt.c里面编写，最后执行halt.c就行了。</p>
+<h3 id="userprog-目录下的修改"><a href="#userprog-目录下的修改" class="headerlink" title="userprog 目录下的修改"></a>userprog 目录下的修改</h3><p>首先需要修改syscall.h ，添加系统调用号以及声明系统调用</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562571898/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%8F%B7_oei9le.png" alt></p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E7%B3%BB%E7%BB%9F%E5%A3%B0%E6%98%8E_wjuhpo.png" alt></p>
+<p>此外还需要修改exception.cc，它是用来处理中断的，异常和系统调用都算中断，它的作用是告诉系统遇到中断后该如何去做，同样仿照case SC_ADD 进行编写。<br><img src="https://res.cloudinary.com/starrkd/image/upload/v1562571898/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E4%BB%BF%E5%86%99SC_MUL_p03bas.png" alt><br><img src="https://res.cloudinary.com/starrkd/image/upload/v1562571898/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E4%BB%BF%E5%86%99SC_DIV_zahzob.png" alt></p>
+<p>最后在ksyscall.h中定义系统调用的参数以及如何去做。<br><img src="https://res.cloudinary.com/starrkd/image/upload/v1562571898/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E4%BF%AE%E6%94%B9ksyscall_rhgu7d.png" alt></p>
+<h2 id="编译和测试"><a href="#编译和测试" class="headerlink" title="编译和测试"></a>编译和测试</h2><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>进入code/build.linux 目录，在Makefile文件中添加32位编译环境</p>
+<p>重新编译Nachos系统，清除之前的编译并重新编译</p>
+<p><code>make clean &amp;&amp; make</code></p>
+<p>进入 code/test 目录，编译 make 之后 ls 查看，成功会生成 test.noff 可执行程序。如若这里报错，可以回溯上文的操作步骤是否已正确达成，或者确认交叉编译器是否成功安装并更改成正确的编译环境。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在 test 目录下 执行</p>
+<p><code>../build.linux/nachos -x test.noff -d u</code></p>
+<p>-d u 参数是debug出有关用户程序的信息。结果如下</p>
+<p><img src="https://res.cloudinary.com/starrkd/image/upload/v1562571897/Blog/Nachos/Install%20and%20complie/Nachos%20%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/%E5%AE%8C%E6%88%90%E5%9B%BE_jjckov.png" alt></p>
 
       
     </div>
@@ -487,15 +459,15 @@ export PATH=$HOME:$PATH</code></pre><p>修改 Makefile 203行与210行分别加�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/08/nachos-jiao-cha-bian-yi-qi-de-an-zhuang/" rel="next" title="Nachos 交叉编译器的安装">
+                <i class="fa fa-chevron-left"></i> Nachos 交叉编译器的安装
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/08/nachos-jiao-cha-bian-yi-qi-de-an-zhuang/" rel="prev" title="Nachos 交叉编译器的安装">
-                Nachos 交叉编译器的安装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -627,7 +599,7 @@ export PATH=$HOME:$PATH</code></pre><p>修改 Makefile 203行与210行分别加�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#何为Nachos"><span class="nav-number">1.</span> <span class="nav-text">何为Nachos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nachos安装"><span class="nav-number">2.</span> <span class="nav-text">Nachos安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C语言编译环境搭建"><span class="nav-number">2.1.</span> <span class="nav-text">C语言编译环境搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nachos-修改和编译"><span class="nav-number">2.2.</span> <span class="nav-text">Nachos 修改和编译</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新的系统调用的实现"><span class="nav-number">2.</span> <span class="nav-text">新的系统调用的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#test目录下的修改"><span class="nav-number">2.1.</span> <span class="nav-text">test目录下的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#userprog-目录下的修改"><span class="nav-number">2.2.</span> <span class="nav-text">userprog 目录下的修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译和测试"><span class="nav-number">3.</span> <span class="nav-text">编译和测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译"><span class="nav-number">3.1.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></div>
             
 
           </div>

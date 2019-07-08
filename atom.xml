@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.starrk.me/"/>
-  <updated>2019-07-08T07:03:45.658Z</updated>
+  <updated>2019-07-08T07:50:52.672Z</updated>
   <id>https://www.starrk.me/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nachos 系统调用</title>
+    <link href="https://www.starrk.me/2019/07/08/nachos-xi-tong-diao-yong/"/>
+    <id>https://www.starrk.me/2019/07/08/nachos-xi-tong-diao-yong/</id>
+    <published>2019-07-08T07:11:19.000Z</published>
+    <updated>2019-07-08T07:50:52.672Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h2&gt;&lt;p&gt;Nachos 只有一些系统调用，同时诸如 exec
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Nachos 交叉编译器的安装</title>
