@@ -4,15 +4,24 @@
     <title><![CDATA[Nachos 系统调用]]></title>
     <url>%2F2019%2F07%2F08%2Fnachos-xi-tong-diao-yong%2F</url>
     <content type="text"><![CDATA[目标Nachos 只有一些系统调用，同时诸如 exec 、join等系统调用还不完全，需要用户自己去编写。本文目标是编写一个新的系统调用，参照加法的系统调用编写出乘法和除法的系统调用。 新的系统调用的实现test目录下的修改进入 code/test目录，编写一个C程序，模仿add.c，命名为test.c 样例如下： 这是一会需要编译测试的程序，Mul和Div是我们将要追加的系统调用。此外还需要在test目录下更改start.c，它是编译程序时的入口，再执行可执行文件时会通过start.o进行查找系统调用，所以需要在start.c 中追加新的系统调用，格式参考add 最后还需要修改Makefile，使得能对用户程序进行编译生成可执行文件，在SOURCES后追加就完事了，偷懒可以直接在halt.c里面编写，最后执行halt.c就行了。 userprog 目录下的修改首先需要修改syscall.h ，添加系统调用号以及声明系统调用 此外还需要修改exception.cc，它是用来处理中断的，异常和系统调用都算中断，它的作用是告诉系统遇到中断后该如何去做，同样仿照case SC_ADD 进行编写。 最后在ksyscall.h中定义系统调用的参数以及如何去做。 编译和测试编译进入code/build.linux 目录，在Makefile文件中添加32位编译环境 重新编译Nachos系统，清除之前的编译并重新编译 make clean &amp;&amp; make 进入 code/test 目录，编译 make 之后 ls 查看，成功会生成 test.noff 可执行程序。如若这里报错，可以回溯上文的操作步骤是否已正确达成，或者确认交叉编译器是否成功安装并更改成正确的编译环境。 测试在 test 目录下 执行 ../build.linux/nachos -x test.noff -d u -d u 参数是debug出有关用户程序的信息。结果如下]]></content>
+      <categories>
+        <category>Nachos</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[Nachos 交叉编译器的安装]]></title>
     <url>%2F2019%2F07%2F08%2Fnachos-jiao-cha-bian-yi-qi-de-an-zhuang%2F</url>
     <content type="text"><![CDATA[MIPS介绍Nachos 模拟了一个MPIS架构的硬件。在进行Nachos上进行用户程序编译执行时需要使用到交叉编译，将原MPIS下的coff可执行程序转化为Nachos能执行的noff程序。 交叉编译器的安装默认已完成了Nachos的安装，需要用到Nachos的mips的交叉编译包： mips-decstation.linux.tgz。 首先将 mips-decstation.linux.tgz 拷贝到根目录下，并进行解压。 tar xvzf mips-destation.linux.tgz 之后进入Nachos目录下的coff2noff文件夹，编译可执行文件转化工具。 cd coff2noff &amp; ./cofigure 修改生成的Makefile， 在编译选项和链接选项中加入 32 位选项 -m32 如下图所示 然后执行 make ，生成可执行程序 之后进入Nachos目录下的 code/test 目录，对编译配置文件 Makefile.dep 进行如下修改： CPP = /usr/local/nachos/lib/gcc-lib/decstation-ultrix/2.95.2/cpp GCCDIR = /usr/local/nachos/bin/decstation-ultrix-这是告诉编译器在编译可执行程序时使用交叉编译器，这里的目录位置便是交叉编译的位置。 最后在 test 目录下执行 make， make 没有产生错误信息，编译环境搭建成功 测试用户加载用户程序： ./nachos -x add.noff]]></content>
+      <categories>
+        <category>Nachos</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[Nachos 安装]]></title>
     <url>%2F2019%2F06%2F18%2Fnachos-an-zhuang%2F</url>
     <content type="text"><![CDATA[何为Nachos它是一个教学用的操作系统平台，运行在宿主机上，通过编译即可运行。它的源码大部分由C和C++组成，涉及少量的汇编。因为是教学使用，源码中有大量注释，方面理解，同时源码也并不复杂。Nachos已经搭建好了操作系统框架，包括：线程、系统调用、内存管理等等。但是并不完善，诸如线程只能使用4个，内存默认是没有启用TLB快表。这些不完善的地方便是需要自己去学习，扩展，提升的地方。 Nachos安装操作系统环境：Ubuntu 16.04Nachos包：4.1版本 C语言编译环境搭建（1）安装 C与C++编译器 sudo apt-get install build-essential （2）安装 g++ 和 gcc 多平台库 sudo apt install g++-multilib gcc-multilib （3）安装 gcc和 g++ 5的版本，并将其切换。 注：因Ubuntu 16.04自带的7版本环境在编译Nachos时会出现bug，需要将其版本号降下来。 sudo apt-get install gcc-5 g++-5 sudo update-alternative --install /usr/bin/gcc gcc /usr/bin/gcc-5 100 sudo update-alternative --install /usr/bin/g++ g++ /usr/bin/g++ -5 100Nachos 修改和编译（1）解压Nachos后，修改 code/lib/sysdep.h，在头文件后追加： using namespace std; 如图所示 (2)建立依赖关系 cd ./code/build.linux make depend （3）修改Makefile 删除 203 行的 -fwritable-strings 选项 改变后变为： CFLAGS = -ftemplate-depth-100 -Wno-deprecated -g -Wall $(INCPATH) $(DEFINES) $(HOSTCFLAGS) -DCHANGED 此时执行make 会报错，出现 error ‘IsInList’ （4）修改 code/lib/list.cc，将编译中包含 numInList, first, last, IsEmpty(), IsInList 的地方或属性修改为 this-&gt;numInList, this-&gt;first, this-&gt;last, this-&gt;IsEmpty(), this-&gt;IsInList （哪里报错改哪里） 再次编译，仍然会出现错误，出现 error cast from ‘VoidFunctionPtr’ 。 （5）在Makefile 203 行添加选项 -fpermissive 再次执行make，会出现一些汇编的报错。 switch.s 7:Error invalid instruction suffix for &#39;push&#39; switch.s 9:Error invalid instruction suffix for &#39;push&#39; ......... make: *** [switch.o] Error 1 给 g++ 增加编译选项 -m32 echo ‘/usr/bin/g++ -m32 “$@”’ &gt; /̃g++ chmod +x /̃g++ export PATH=$HOME:$PATH修改 Makefile 203行与210行分别加入选项 -m32 和 –32， 让编译器能够编译汇编32位的代码。 此时执行 make ， 便可成功编译出 nachos 二进制文件了。成功执行后，命令行代码如下图所示： Nachos的安装算是完成了，但是为了后续实验能正常操作，还需要安装交叉编译环境。]]></content>
+      <categories>
+        <category>Nachos</category>
+      </categories>
   </entry>
 </search>

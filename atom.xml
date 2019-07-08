@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.starrk.me/"/>
-  <updated>2019-07-08T07:50:52.672Z</updated>
+  <updated>2019-07-08T08:01:48.146Z</updated>
   <id>https://www.starrk.me/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>Nachos 系统调用</title>
     <link href="https://www.starrk.me/2019/07/08/nachos-xi-tong-diao-yong/"/>
     <id>https://www.starrk.me/2019/07/08/nachos-xi-tong-diao-yong/</id>
-    <published>2019-07-08T07:11:19.000Z</published>
-    <updated>2019-07-08T07:50:52.672Z</updated>
+    <published>2019-07-08T07:11:00.000Z</published>
+    <updated>2019-07-08T08:01:48.146Z</updated>
     
     <summary type="html">
     
@@ -35,6 +35,8 @@
     
     </summary>
     
+      <category term="Nachos" scheme="https://www.starrk.me/categories/Nachos/"/>
+    
     
   </entry>
   
@@ -42,8 +44,8 @@
     <title>Nachos 交叉编译器的安装</title>
     <link href="https://www.starrk.me/2019/07/08/nachos-jiao-cha-bian-yi-qi-de-an-zhuang/"/>
     <id>https://www.starrk.me/2019/07/08/nachos-jiao-cha-bian-yi-qi-de-an-zhuang/</id>
-    <published>2019-07-08T06:38:43.000Z</published>
-    <updated>2019-07-08T07:03:45.658Z</updated>
+    <published>2019-07-08T06:38:00.000Z</published>
+    <updated>2019-07-08T08:02:30.050Z</updated>
     
     <summary type="html">
     
@@ -57,6 +59,8 @@
     
     </summary>
     
+      <category term="Nachos" scheme="https://www.starrk.me/categories/Nachos/"/>
+    
     
   </entry>
   
@@ -64,8 +68,8 @@
     <title>Nachos 安装</title>
     <link href="https://www.starrk.me/2019/06/18/nachos-an-zhuang/"/>
     <id>https://www.starrk.me/2019/06/18/nachos-an-zhuang/</id>
-    <published>2019-06-18T00:40:18.000Z</published>
-    <updated>2019-07-02T03:48:22.026Z</updated>
+    <published>2019-06-18T00:40:00.000Z</published>
+    <updated>2019-07-08T08:02:18.118Z</updated>
     
     <summary type="html">
     
@@ -78,6 +82,8 @@
       
     
     </summary>
+    
+      <category term="Nachos" scheme="https://www.starrk.me/categories/Nachos/"/>
     
     
   </entry>
