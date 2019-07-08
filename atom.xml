@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.starrk.me/"/>
-  <updated>2019-07-02T03:48:22.026Z</updated>
+  <updated>2019-07-08T07:03:45.658Z</updated>
   <id>https://www.starrk.me/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nachos 交叉编译器的安装</title>
+    <link href="https://www.starrk.me/2019/07/08/nachos-jiao-cha-bian-yi-qi-de-an-zhuang/"/>
+    <id>https://www.starrk.me/2019/07/08/nachos-jiao-cha-bian-yi-qi-de-an-zhuang/</id>
+    <published>2019-07-08T06:38:43.000Z</published>
+    <updated>2019-07-08T07:03:45.658Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;MIPS介绍&quot;&gt;&lt;a href=&quot;#MIPS介绍&quot; class=&quot;headerlink&quot; title=&quot;MIPS介绍&quot;&gt;&lt;/a&gt;MIPS介绍&lt;/h2&gt;&lt;p&gt;Nachos
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Nachos 安装</title>
